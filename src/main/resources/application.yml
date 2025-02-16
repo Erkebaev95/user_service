@@ -1,0 +1,40 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: security-security
+#  datasource:
+#    url: jdbc:h2:mem:security-security
+#    driverClassName: org.h2.Driver
+#    username: root
+#    password: root
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/user_service_db
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  liquibase:
+    enabled: true
+    drop-first: false
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    default-schema: public
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+
+token:
+  signing:
+    key: b23813da7f066be253e3bdfa41f87e010b585ff970ff54e428fdcc34b0ad1e50 #secretKey
+    expiration: 604800000
