@@ -8,7 +8,6 @@ import org.education.spring_security_demo.enums.Role;
 import org.education.spring_security_demo.model.User;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -20,15 +19,6 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
-
-    public static void main(String[] args) {
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String adm = passwordEncoder.encode("administrator");
-        String mod = passwordEncoder.encode("moderator");
-
-        System.out.println(adm);
-        System.out.println(mod);
-    }
 
     /**
      * Регистрация пользователя
